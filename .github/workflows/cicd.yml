@@ -64,4 +64,5 @@ jobs:
         script: |
           cd /opt/investment-web/
           cp ./build/index.html ./build/404.html
+          pm2 stop /usr/local/bin/http-server -- ./build  -p 8080
           pm2 start /usr/local/bin/http-server -- ./build  -p 8080
