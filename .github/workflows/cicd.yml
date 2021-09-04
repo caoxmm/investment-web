@@ -63,4 +63,5 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
           cd /opt/investment-web/
+          cp ./build/index.html ./build/404.html
           pm2 start /usr/local/bin/http-server -- ./build  -p 8080
