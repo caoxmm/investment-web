@@ -31,3 +31,13 @@ jobs:
       run: |
         yarn install
         yarn build
+        
+    - name: copy file via ssh password
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        source: "./build/*"
+        target: "/opt/investment-web/"
