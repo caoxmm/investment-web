@@ -1,0 +1,38 @@
+.MyLog {
+  display: flex;
+  margin-top: 1.59375em;
+  padding: 0 1.125em;
+  align-items: flex-start;
+  justify-content: flex-end;
+  img {
+    width: 3.8125em;
+    border-radius: 0.3125em;
+  }
+  .message {
+    margin-right: 1.125em;
+    border-radius: 0.3125em;
+    font-size: 0.8em;
+    font-weight: 500;
+    background-color: #a9e97a;
+    padding: 1.28125em 1.25em;
+    min-height: 3.8125em;
+    position: relative;
+    overflow: visible;
+    max-width: 24.9375em;
+    word-break: break-all;
+    white-space: pre-wrap;
+    text-align: left;
+    &::after {
+      content: ' ';
+      display: block;
+      position: absolute;
+      width: 1em;
+      height: 1em;
+      border-radius: 0.1em;
+      right: -0.46875em;
+      top: 1.7em;
+      transform: rotate(45deg);
+      background-color: #a9e97a;
+    }
+  }
+}
