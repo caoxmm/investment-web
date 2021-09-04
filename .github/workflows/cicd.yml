@@ -26,6 +26,18 @@ jobs:
     - name: install yarn
       run: |
         npm install -g yarn
+        
+    - name: startup
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: |
+          rm -rf /opt/investment-web/*
+          rm -rf /root/.pm2/logs/main-error.log
+          rm -rf /root/.pm2/logs/main-out.log
 
     - name: Build
       run: |
@@ -41,3 +53,14 @@ jobs:
         port: ${{ secrets.PORT }}
         source: "./build/*"
         target: "/opt/investment-web/"
+
+    - name: startup
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: |
+          cd /opt/investment-web/
+          pm2 start /usr/local/bin/http-server -- ./build  -p 8080
